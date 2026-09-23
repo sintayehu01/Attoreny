@@ -1,0 +1,213 @@
+@font-face {
+  font-family: 'Gotham';
+  src: url('https://thefriedfirm.com/wp-content/themes/the-fried-firm-theme/assets/font/Gotham/WOFF_GOTHAM/Gotham-Light.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('https://thefriedfirm.com/wp-content/themes/the-fried-firm-theme/assets/font/Gotham/WOFF_GOTHAM/Gotham-Medium.woff2') format('woff2');
+  font-weight: 600 700;
+  font-display: swap;
+}
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE ONLY design-tokens file. This single file owns the whole app's visual
+   identity — colors, radius, fonts, shadows, light + dark. To re-theme the app
+   (e.g. "make it a Supabase theme"), edit the token VALUES in :root and .dark
+   below. Nothing else. No second config file, no component edits, no library
+   theme layer. Values are oklch(); the @theme inline block maps them to Tailwind
+   utilities (bg-primary, text-foreground, border-border, …) in this same file.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Fried Firm brand palette: ink, gallery white, and signature sky blue ── */
+:root {
+  --background: oklch(0.968 0.003 255);
+  --foreground: oklch(0.258 0.008 29);
+  --card: oklch(0.99 0.002 255);
+  --card-foreground: oklch(0.258 0.008 29);
+  --popover: oklch(0.99 0.002 255);
+  --popover-foreground: oklch(0.258 0.008 29);
+  --primary: oklch(0.258 0.008 29);
+  --primary-foreground: oklch(0.99 0.002 255);
+  --secondary: oklch(0.937 0.004 255);
+  --secondary-foreground: oklch(0.31 0.008 29);
+  --muted: oklch(0.935 0.005 255);
+  --muted-foreground: oklch(0.51 0.008 29);
+  --accent: oklch(0.729 0.09 239);
+  --accent-foreground: oklch(0.21 0.01 29);
+  --destructive: oklch(0.577 0.215 27);
+  --destructive-foreground: oklch(0.99 0.002 255);
+  --border: oklch(0.866 0.006 255);
+  --input: oklch(0.866 0.006 255);
+  --ring: oklch(0.729 0.09 239);
+  --chart-1: oklch(0.729 0.09 239);
+  --chart-2: oklch(0.258 0.008 29);
+  --chart-3: oklch(0.51 0.008 29);
+  --chart-4: oklch(0.82 0.045 239);
+  --chart-5: oklch(0.67 0.025 29);
+  --sidebar: oklch(0.968 0.003 255);
+  --sidebar-foreground: oklch(0.258 0.008 29);
+  --sidebar-primary: oklch(0.258 0.008 29);
+  --sidebar-primary-foreground: oklch(0.99 0.002 255);
+  --sidebar-accent: oklch(0.729 0.09 239);
+  --sidebar-accent-foreground: oklch(0.21 0.01 29);
+  --sidebar-border: oklch(0.866 0.006 255);
+  --sidebar-ring: oklch(0.729 0.09 239);
+
+  --radius: 0.125rem;
+  --font-sans: 'Gotham', Arial, sans-serif;
+  --font-serif: 'Gotham', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --shadow-sm: 0 2px 8px oklch(0 0 0 / 0.08);
+  --shadow-md: 0 8px 24px oklch(0 0 0 / 0.12);
+  --shadow-lg: 0 18px 50px oklch(0 0 0 / 0.18);
+}
+
+.dark {
+  --background: oklch(0.20 0.008 29);
+  --foreground: oklch(0.94 0.003 255);
+  --card: oklch(0.255 0.008 29);
+  --card-foreground: oklch(0.94 0.003 255);
+  --popover: oklch(0.255 0.008 29);
+  --popover-foreground: oklch(0.94 0.003 255);
+  --primary: oklch(0.94 0.003 255);
+  --primary-foreground: oklch(0.20 0.008 29);
+  --secondary: oklch(0.31 0.008 29);
+  --secondary-foreground: oklch(0.88 0.003 255);
+  --muted: oklch(0.29 0.008 29);
+  --muted-foreground: oklch(0.70 0.006 255);
+  --accent: oklch(0.76 0.08 239);
+  --accent-foreground: oklch(0.19 0.01 29);
+  --destructive: oklch(0.65 0.19 25);
+  --destructive-foreground: oklch(0.20 0.008 29);
+  --border: oklch(0.38 0.008 29);
+  --input: oklch(0.38 0.008 29);
+  --ring: oklch(0.76 0.08 239);
+  --chart-1: oklch(0.76 0.08 239);
+  --chart-2: oklch(0.83 0.06 200);
+  --chart-3: oklch(0.72 0.04 29);
+  --chart-4: oklch(0.60 0.07 239);
+  --chart-5: oklch(0.88 0.02 29);
+  --sidebar: oklch(0.255 0.008 29);
+  --sidebar-foreground: oklch(0.94 0.003 255);
+  --sidebar-primary: oklch(0.76 0.08 239);
+  --sidebar-primary-foreground: oklch(0.19 0.01 29);
+  --sidebar-accent: oklch(0.31 0.008 29);
+  --sidebar-accent-foreground: oklch(0.88 0.003 255);
+  --sidebar-border: oklch(0.38 0.008 29);
+  --sidebar-ring: oklch(0.76 0.08 239);
+}
+
+/* ── Token → utility mapping (Tailwind v4). Same file as the values above. ── */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+
+  /* Full viewport chain so AppShell / Sidebar h-full + flex-1 work */
+  html { height: 100%; }
+  #root {
+    min-height: 100%;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+  body {
+    min-height: 100%;
+    min-height: 100dvh;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  ::selection { background: oklch(0.729 0.09 239 / 0.4); }
+}
+
+@layer utilities {
+  .animate-fade-in { animation: fade-in 0.3s ease-in-out; }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-copy { animation: hero-arrive 1s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  @keyframes hero-arrive {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .nav-link { position: relative; padding-block: 0.5rem; color: rgb(255 255 255 / 0.82); transition: color 180ms ease; }
+  .nav-link::after { position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: var(--accent); content: ''; transform: scaleX(0); transform-origin: left; transition: transform 180ms ease; }
+  .nav-link:hover { color: white; }
+  .nav-link:hover::after { transform: scaleX(1); }
+
+  .outline-button { display: flex; width: fit-content; align-items: center; justify-content: center; gap: 0.7rem; border: 1px solid rgb(255 255 255 / 0.65); padding: 0.9rem 1.2rem; color: white; font-size: 0.625rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease; }
+  .outline-button:hover { transform: translateY(-2px); border-color: var(--accent); background: var(--accent); color: oklch(0.21 0.01 29); }
+  .outline-button:active { transform: translateY(0) scale(0.98); }
+  .text-link { display: flex; align-items: center; gap: 0.65rem; border-bottom: 1px solid var(--border); padding-bottom: 0.55rem; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; transition: color 180ms ease, border-color 180ms ease; }
+  .text-link:hover { border-color: var(--accent); color: oklch(0.53 0.08 239); }
+  .practice-card { cursor: pointer; }
+  .practice-card img { transition: filter 600ms ease, transform 800ms ease; }
+  .article-card { display: block; }
+  .contact-input { width: 100%; border: 1px solid rgb(255 255 255 / 0.26); border-radius: 0; background: rgb(255 255 255 / 0.035); padding: 1rem 1.1rem; color: white; font: inherit; font-size: 0.875rem; outline: none; transition: border-color 180ms ease, background 180ms ease; }
+  .contact-input::placeholder { color: rgb(255 255 255 / 0.5); }
+  .contact-input:focus { border-color: var(--accent); background: rgb(255 255 255 / 0.075); }
+  .contact-input option { background: #221f20; color: white; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+}
